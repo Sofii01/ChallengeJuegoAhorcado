@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Juego Ahorcado-Alura</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        
+        <img id="logoHeader" src="images/Logo.png">
+        
+        
+        
+        <div class="botonesInicio">
+            <button id="botonIniciarJuego" class="botonAzul">Iniciar partida</button>
+            <button id="botonAgregar" class="botonBlanco">Agregar nueva palabra</button>
+        </div>
+
+        <div id="conteiner">
+            
+            <div>
+                <div id="conteinerAgregarPalabra">
+                    
+                    <textarea id="textAreaPalabra" placeholder="Ingrese una palabra"></textarea>
+                    
+                    <div id="conteinerAvisoBotones">
+                        
+                        <div class="boxAviso">
+                            <img class="imgAviso" src="images/bi_exclamation-circle-fill.png">
+                            <p class="aviso">Max. de 8 letras</p>
+                        </div>
+
+                        <div class="botonesAgregarPalabra">
+                            <button class="botonAzul">Guardar y empezar</button>
+                            <button class="botonBlanco">Cancelar</button>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div id="conteinerJuego">
+                    <canvas id="pizarra"></canvas>
+                    <div id="botonesJuego">
+                        <button class="botonAzul">Nuevo Juego</button>
+                        <button class="botonBlanco">Desistir</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <script src="js/script.js"></script>
+
+
+    </body>
+    
+
+
+
+
+</html>
