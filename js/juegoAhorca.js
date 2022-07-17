@@ -6,12 +6,13 @@ let palabraCorrecta = "";
 let errores = 10;
 
 let palabraSecreta = escojerPalabraSecreta();
-dibujarLineas();
+
 
 
 function escojerPalabraSecreta(){
     let palabra = palabras[Math.floor(Math.random()*palabras.length)];
     console.log(palabra);
+    
     return palabra;
 }
 
@@ -81,53 +82,75 @@ function validarLenght(){
     }
 }
 
-
-document.onkeydown = (e) =>{
-    let confirmacion; 
-    let letra = e.key.toUpperCase();
-    if(!verificarLetra(e.key)){
-        if(palabraSecreta.includes(letra)){
-            // console.log(letra);
-            
-            for(let i=0; i< palabraSecreta.length; i++){
-                if(palabraSecreta[i] == letra){
-                    escribirLetraCorrecta(i);
-                    adicionarLetraCorrecta(palabraSecreta.indexOf(letra));
-                    // console.log(palabraSecreta.indexOf(letra), i);
-                }
-            }
-            if(validarLenght()){
-                for(let i =0; i< palabraSecreta.length;i++){
-                    if(palabraCorrecta.includes(palabraSecreta[i])){
-                        confirmacion = true;
+//engloba todo las funciones excepto cuando elige la palabra
+function empiezaJuego(){
+    document.onkeydown = (e) =>{
+        let confirmacion; 
+        let letra = e.key.toUpperCase();
+        if(!verificarLetra(e.key)){
+            if(palabraSecreta.includes(letra)){
+                // console.log(letra);
+                
+                for(let i=0; i< palabraSecreta.length; i++){
+                    if(palabraSecreta[i] == letra){
+                        escribirLetraCorrecta(i);
+                        adicionarLetraCorrecta(palabraSecreta.indexOf(letra));
+                        // console.log(palabraSecreta.indexOf(letra), i);
                         
                     }
                 }
-                if(confirmacion){
-                    alert("Ganaste");
-                    window.location.reload(); 
+                if(validarLenght()){
+                    for(let i =0; i< palabraSecreta.length;i++){
+                        if(palabraCorrecta.includes(palabraSecreta[i])){
+                            confirmacion = true;
+                            
+                        }
+                    }
+                    if(confirmacion){
+                        alert("Ganaste");
+                        window.location.reload(); 
+                    }
+                    
                 }
             }
-        }
-        else{
-            if (!verificarLetra(e)) {
-                adicionarLetraIncorrecta(letra);
-                escribirLetraIncorrecta(letra, errores);
-                // console.log(errores);
+            else{
+                if (!verificarLetra(e)) {
+                    adicionarLetraIncorrecta(letra);
+                    escribirLetraIncorrecta(letra, errores);
+                    // console.log(errores);
+                }
+                if(errores == 0){
+                    alert("Perdiste");
+                    window.location.reload(); 
+                }
+                    
             }
-            if(errores == 0){
-                alert("Perdiste");
-                window.location.reload(); 
-            }
-                
-        }
-        
+            
 
-        
+            
+        }
     }
 }
 
-// function agregarPalabra(palabraNueva){
-//     console.log(palabraNueva.value.toUpperCase)
-//     palabras.push(palabraNueva.toUpperCase);   
-// }
+botonIniciarJuego.addEventListener("click", function(){
+    dibujarLineas()
+    empiezaJuego()
+
+});
+
+
+function agregarPalabra(){
+    let botonGuardarEmpezar = document.querySelector("#botonGuardarEmpezar");
+    botonGuardarEmpezar.addEventListener("click", function(){
+        
+        let nuevaPalabra = textoArea.value.toUpperCase();
+
+        palabraSecreta = nuevaPalabra;
+        dibujarLineas();
+        empiezaJuego();
+
+    })
+    
+    
+        
+}agregarPalabra()
