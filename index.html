@@ -34,25 +34,26 @@
                         </div>
 
                         <div class="botonesAgregarPalabra">
-                            <button class="botonAzul">Guardar y empezar</button>
-                            <button class="botonBlanco">Cancelar</button>
+                            <button id="botonGuardarEmpezar" class="botonAzul">Guardar y empezar</button>
+                            <button id="botonCancelar" class="botonBlanco">Cancelar</button>
                         </div>
                     </div>
                     
                 </div>
 
                 <div id="conteinerJuego">
-                    <canvas id="pizarra"></canvas>
+                    <canvas id="pizarra" height="850px" width="1200"></canvas>
                     <div id="botonesJuego">
-                        <button class="botonAzul">Nuevo Juego</button>
-                        <button class="botonBlanco">Desistir</button>
+                        <button id="botonNuevoJuego" class="botonAzul">Nuevo Juego</button>
+                        <button id="botonDesistir" class="botonBlanco">Desistir</button>
                     </div>
                 </div>
                 
             </div>
         </div>
 
-        <script src="js/script.js"></script>
+        <script src="js/manejoBotones.js"></script>
+        <script src="js/juegoAhorca.js"></script>
 
 
     </body>
