@@ -106,3 +106,11 @@ button[disabled = disabled], button:disabled{
     gap: 10px;
     margin-left: 10%;
 }
+#firma{
+    position: relative;
+    top: 80%;
+    margin-top: 5%;
+    text-align: center;
+    font-family: 'Inter';
+    color: #495057;
+}
