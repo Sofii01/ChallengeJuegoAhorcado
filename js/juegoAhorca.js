@@ -10,6 +10,7 @@ let palabraSecreta = escojerPalabraSecreta();
 function escojerPalabraSecreta(){
     let palabra = palabras[Math.floor(Math.random()*palabras.length)];
     console.log(palabra);
+    
     return palabra;
 }
 
@@ -80,6 +81,8 @@ function validarLenght(){
     }
 }
 
+//engloba todo las funciones excepto cuando elige la palabra
+
 function empiezaJuego(){
     document.onkeydown = (e) =>{
         let confirmacion; 
@@ -98,8 +101,7 @@ function empiezaJuego(){
                 if(validarLenght()){
                     for(let i =0; i< palabraSecreta.length;i++){
                         if(palabraCorrecta.includes(palabraSecreta[i])){
-                            confirmacion = true;
-                            
+                            confirmacion = true; 
                         }
                     }
                     if(confirmacion){
@@ -114,6 +116,31 @@ function empiezaJuego(){
                     escribirLetraIncorrecta(letra, errores);
                     //console.log(errores);
                 }
+
+                if(errores == 0){
+                    alert("Perdiste");
+                    window.location.reload(); 
+                if(validarLenght()){
+                    for(let i =0; i< palabraSecreta.length;i++){
+                        if(palabraCorrecta.includes(palabraSecreta[i])){
+                            confirmacion = true;
+                            
+                        }
+                    }
+                    if(confirmacion){
+                        alert("Ganaste");
+                        window.location.reload(); 
+                    }
+
+                }
+                    
+            }
+            else{
+                if (!verificarLetra(e)) {
+                    adicionarLetraIncorrecta(letra);
+                    escribirLetraIncorrecta(letra, errores);
+                    // console.log(errores);
+                }
                 if(errores == 0){
                     alert("Perdiste");
                     window.location.reload(); 
@@ -121,8 +148,7 @@ function empiezaJuego(){
                     
             }
             
-    
-            
+            }
         }
     }
 }
